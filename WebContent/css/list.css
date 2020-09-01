@@ -1,0 +1,105 @@
+@charset "EUC-KR";
+ *{
+            outline:none;   
+        }
+        html, body{
+            margin:0px;
+            padding:0px;
+        }
+        body{
+            background-color:#b8f5c0;
+        }
+        #header{
+            background-color:#72e7ad;
+            width:100%;
+            height:40px;
+            font-size: 1.5em;
+            color:cornsilk;
+        }
+        #title{
+            font-size:2.3em;
+            border-bottom:1px solid #ddd;
+            color: #aaa;
+            width:1100px;
+            margin:40px auto;
+        }
+        #tbl_box{
+            width:1400px;
+            height:727px;
+            margin:95px auto;
+            background-color:white;
+            padding-top:30px;
+        }
+        .board{
+            /* border:1px solid black; */
+            border-collapse: collapse;
+            width: 1200px;
+            height: 100px;
+            margin: 0px auto;
+        }
+        .board th, .board td{
+            border:1px solid #eee;
+            border-left:0px;
+            border-right:0px;
+            text-align:center;
+            height:30px;
+        }
+
+        th{background-color:#72e7ad;}
+
+        td:nth-child(1){width:20px;}
+        td:nth-child(2){width:80px;}
+        td:nth-child(3){width:700px;}
+        td:nth-child(3):hover{font-weight:bold; text-decoration:underline; cursor:pointer;}
+        td:nth-child(4){width:200px;}
+        td:nth-child(5){width:200px;}
+        td:nth-child(6){width:50px;}
+
+        #writeBtn{
+        	padding:5px;
+            text-align:center;
+            border:1px solid #eee;
+            width:70px;
+            background-color:#abf77f;
+            margin-left:1200px;
+            color:black;
+            cursor:pointer;
+            
+        }
+        #searchBox{
+            width:500px;
+            margin:40px auto 10px;
+        }
+        #searchText{
+            width:300px;
+            border:0px;
+            border-bottom:1px solid black;
+            font-size:1.1em;
+        }
+        #searchBtn{
+            width:60px;
+            background-color:#abf77f;
+            font-size:1.1em;
+            height:30px;
+            border:0px;
+            cursor:pointer;
+        }
+        #selectBox{
+            width:90px;
+            font-size:1.1em;
+        }
+        .pagingBtn{
+            float:left;
+            border-right: 1px solid gray;
+            width:20px; 
+            font-size:1.1em;
+            text-align:center;
+            list-style-type: none;
+            cursor:pointer;
+        }
+        .pagingBtn:nth-last-child(){
+            border-right:0px;
+        }
+        #paging{
+            margin-left:550px;
+        }
