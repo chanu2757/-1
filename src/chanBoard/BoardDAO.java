@@ -31,10 +31,28 @@ public class BoardDAO {
 		}
 	}// close
 
-	public ArrayList<BoardDTO> getList() {
-		try {			
-			String sql = "select * from vwboardlist b order by rnum desc";
+	public ArrayList<BoardDTO> getList(HashMap<String, String> map) {
+		try {	
+			String where="";
+			if(map.get("sel").equals("0")) {
+				where =String.format("rnum>=%s and rnum<=%s order by rnum desc",map.get("begin"),map.get("end"));
+			}
+			else if(map.get("sel").equals("1")){
+				where = String.format("subject like '%%'||'%s'||'%%'",map.get("search"));
+			}
+			else if(map.get("sel").equals("2")) {
+				where = String.format("(subject like '%%'||'%s'||'%%' or content like '%%'||'%s'||'%%')",map.get("search"),map.get("search"));
+			}
+			else if(map.get("sel").equals("3")) {
+				where = String.format("writer like '%%'||'%s'||'%%'	",map.get("search")); 
+			}
+			else {
+				where =String.format("rnum>=%s and rnum<=%s order by rnum desc",map.get("begin"),map.get("end"));
+			}
 			
+			String sql = String.format("select * from vwboardlist where %s ",where);
+			
+			System.out.println(sql);
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 			

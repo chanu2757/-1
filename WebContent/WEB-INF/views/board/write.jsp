@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 <link rel ="stylesheet" href="css/jquery-ui.css">
@@ -12,35 +12,35 @@
 <body>
     <script src= "js/jquery-1.12.4.js"></script>
     <script src= "js/jquery-ui.js"></script>
-    <!-- »ó´Ü ¸Þ´º -->
+    <!-- ìƒë‹¨ ë©”ë‰´ -->
 
-    <!-- ÄÁÅ×ÀÌ³Ê -->
+    <!-- ì»¨í…Œì´ë„ˆ -->
     <div id="container">
         <div id="header">
-            Âù¿ìÀÇ °Ô½ÃÆÇÀÔ´Ï´Ù.
+            ì°¬ìš°ì˜ ê²Œì‹œíŒìž…ë‹ˆë‹¤.
         </div>
         
         <div id="main">
-            <div id="title">±Û¾²±â</div>
+            <div id="title">ê¸€ì“°ê¸°</div>
             <form method="POST" action="../board/writeOk.do">
             <div id="writerBox">
-                <span class="writer">ÀÛ¼ºÀÚ</span><input class="subject" type="text" id="writer" name="writer">
+                <span class="writer">ìž‘ì„±ìž</span><input class="subject" type="text" id="writer" name="writer">
             </div>
             <div id="subjectBox">
-                <span class="subject">Á¦¸ñ</span> <input class="subject" type="text" id="subject" name="subject">
+                <span class="subject">ì œëª©</span> <input class="subject" type="text" id="subject" name="subject">
             </div>
             <div id="contentBox">
-                <span class="content">³»¿ë</span> <textarea class="content" id="content" name="content"></textarea>
+                <span class="content">ë‚´ìš©</span> <textarea class="content" id="content" name="content"></textarea>
             </div>
 
             <div id="file">
-                <div>ÆÄÀÏ Ã·ºÎ</div>
+                <div>íŒŒì¼ ì²¨ë¶€</div>
                 <input type="file" name="">
             </div>
-            <button id="addfile">ÆÄÀÏ Ãß°¡</button>
+            <button id="addfile">íŒŒì¼ ì¶”ê°€</button>
             <div id="btnBox">
-                <button class="byeBtn" type="button">Ãë¼Ò</button>
-                <button class="byeBtn" type="submit">±Û¾²±â</button>
+                <button class="byeBtn" type="button">ì·¨ì†Œ</button>
+                <button class="byeBtn" type="submit">ê¸€ì“°ê¸°</button>
             </div>
             </form>
     </div><!-- main -->

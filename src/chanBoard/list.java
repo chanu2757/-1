@@ -18,8 +18,16 @@ public class list extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	req.setCharacterEncoding("UTF-8");
 		
+	//검색
+	String sel = req.getParameter("sel");
+	String search = req.getParameter("search");
+	
 	HashMap<String,String> map = new HashMap<String,String>();
 	
+	map.put("sel",sel+"");
+	map.put("search",search+"");
+	System.out.println(sel);
+	System.out.println(search);
 	//페이징 처리 관련 변수
 		int nowPage = 0; //현재 페이지 번호
 		int totalCount = 0; //총 게시물 수
@@ -34,8 +42,7 @@ public class list extends HttpServlet{
 		//list.do -> list.do?page = 1 변경
 		//list.do?page =3 
 
-		String page= req.getParameter("page");
-		
+		String page= req.getParameter("pag");
 		if(page==null || page =="") nowPage = 1;//default
 		else nowPage = Integer.parseInt(page);
 		
@@ -54,10 +61,80 @@ public class list extends HttpServlet{
 		//총 페이지 수 계산하기
 		//총 페이지 수 = 총 게시물 수 / 한페이지당 출력 게시물 수
 		// ? = 175 / 10 -> 17.5 -> 18
+	
 	totalCount = dao.getTotalCount(map);
-	ArrayList<BoardDTO> dto = dao.getList();
+	ArrayList<BoardDTO> dto = dao.getList(map);
 	dao.close();
 	
+	totalPage = totalCount/blockSize+1;
+	
+	String pagebar = "";
+	loop=1;
+	n=1;
+	pagebar += "<nav class=\"pagebar \">";
+	pagebar += "<ul class=\"pagination paging\">";
+	
+	//이전 10 페이지
+	if(n==1) {
+	pagebar += "<li class='disabled pagingBtn' id='prevbtn' >";
+	pagebar += "<a href=\"#!\" aria-label=\"Previous\">";
+	pagebar += "<span aria-hidden=\"true\">&laquo;</span>";
+	pagebar += "</a>";
+	pagebar += "</li>";
+	}
+	else {
+	pagebar += "<li class='pagingBtn'>";
+	pagebar += String.format("<a href=\"/chanBoard/board/list.do?pag=%d\" aria-label=\"Previous\">",n-1);
+	pagebar += "<span aria-hidden=\"true\">&laquo;</span>";
+	pagebar += "</a>";
+	pagebar += "</li>";
+	}
+	
+	
+	//페이지 번호
+//	for(int i=1;i<totalPage;i++) {
+	while(!(loop>blockSize||n>totalPage)) {
+	if(n == nowPage) {
+	pagebar += "<li class='active pagingBtn'>";
+	pagebar += String.format("<a href=\"#!\">%d</a>",n);
+	pagebar += "</li>";
+	}
+	else {
+	pagebar += "<li class='pagingBtn'>";
+	pagebar += String.format("<a href=\"/chanBoard/board/list.do?pag=%d\">%d</a>",n,n);
+	pagebar += "</li>";
+	}
+	loop++;
+	n++;
+//	}
+	}
+
+	//다음 10페이지
+	if(n>totalPage) {
+	pagebar += "<li class='disabled pagingBtn'>";
+	pagebar += "<a href=\"#!\" aria-label=\"Next\">";
+	pagebar += "<span aria-hidden=\"true\">&raquo;</span>";
+	pagebar += "</a>";
+	pagebar += "</li>";
+	
+	pagebar += "</ul>";
+	pagebar += "</nav>";
+	}
+	else {
+	pagebar += "<li class='pagingBtn'>";
+	pagebar += String.format("<a href=\"/chanBoard/board/list.do?pag=%d\" aria-label=\"Next\">",n);
+	pagebar += "<span aria-hidden=\"true\">&raquo;</span>";
+	pagebar += "</a>";
+	pagebar += "</li>";
+	
+	pagebar += "</ul>";
+	pagebar += "</nav>";
+	}
+	
+	req.setAttribute("totalCount", totalCount);
+	req.setAttribute("totalPage", totalPage);
+	
+	req.setAttribute("pagebar", pagebar);
 	req.setAttribute("dto", dto);
 	RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/list.jsp");
 	dispatcher.forward(req, resp);

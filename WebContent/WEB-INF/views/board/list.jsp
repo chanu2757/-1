@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 <link rel="stylesheet" href="/chanBoard/css/list.css">
@@ -12,27 +12,27 @@
 <body>
     <script src= "../js/jquery-1.12.4.js"></script>
     <script src= "../js/jquery-ui.js"></script>
-    <!-- »ó´Ü ¸Ş´º -->
+    <!-- ìƒë‹¨ ë©”ë‰´ -->
 
-    <!-- ÄÁÅ×ÀÌ³Ê -->
+    <!-- ì»¨í…Œì´ë„ˆ -->
     <div id="container">
 
         <div id="header">
-          Âù¿ìÀÇ °Ô½ÃÆÇÀÔ´Ï´Ù.
+          ì°¬ìš°ì˜ ê²Œì‹œíŒì…ë‹ˆë‹¤.
         </div>
 
         <div id="main">
             <div id="tbl_box">
-                <div id="title">¸ŞÀÎ È­¸é</div>
+                <div id="title">ë©”ì¸ í™”ë©´</div>
             <table id="tbl" class="board">
             <thead>
                 <tr>
                 <th><input type="checkbox" id="allcb"></th>
-                <th>¹øÈ£</th>
-                <th>Á¦¸ñ</th>
-                <th>ÀÛ¼ºÀÚ</th>
-                <th>ÀÛ¼ºÀÏ</th>
-                <th>Á¶È¸¼ö</th>
+                <th>ë²ˆí˜¸</th>
+                <th>ì œëª©</th>
+                <th>ì‘ì„±ì</th>
+                <th>ì‘ì„±ì¼</th>
+                <th>ì¡°íšŒìˆ˜</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,26 +48,23 @@
      			</c:forEach>
             </tbody> 
             </table>
+            <form method="GET" action="/chanBoard/board/list.do">
             <div id= "searchBox">
                 <select id="selectBox">
-                    <option value="Á¦¸ñ">Á¦¸ñ</option>
-                    <option value="³»¿ë">Á¦¸ñ+³»¿ë</option>
-                    <option value="ÀÛ¼ºÀÚ">ÀÛ¼ºÀÚ</option>
+                	<option value="0" checked>ì„ íƒ</option>
+                    <option value="1">ì œëª©</option>
+                    <option value="2">ì œëª©+ë‚´ìš©</option>
+                    <option value="3">ì‘ì„±ì</option>
                 </select>
-                <input type="text" id="searchText">
-                <button id="searchBtn" type="submit">°Ë»ö</button>
+                <input type="text" id="searchText" name="search" value="">
+                <input type="hidden" value="" id="input_sel" name="sel">
+                <button id="searchBtn" type="submit">ê²€ìƒ‰</button>
+            
             </div>
+            </form>
             <div id="moveBox">
-            <ul id="paging">
-                <li class="pagingBtn" id="prevbtn"><i class="fas fa-angle-left"></i></li>
-                <li class="pagingBtn">y</li>
-                <li class="pagingBtn">y</li>
-                <li class="pagingBtn">y</li>
-                <li class="pagingBtn">y</li>
-                <li class="pagingBtn">y</li>
-                <li class="pagingBtn" id="nextbtn"><i class="fas fa-angle-right"></i></li>
-            </ul>
-            <a href="../board/write.do"><div id="writeBtn" name="write"><i class="fas fa-pencil-alt"></i>±Û¾²±â</div></a>
+            ${pagebar }
+            <div id="writeBtn" name="write"><a href="../board/write.do"><i class="fas fa-pencil-alt"></i>ê¸€ì“°ê¸°</a></div>
             </div>
         </div>
     </div><!-- tbl_box-->
@@ -77,6 +74,10 @@
     </div><!-- container -->
 
 	<script>
+		$("#selectBox").change(function(){
+// 			alert($(this).val());
+			$("#input_sel").attr("value",$(this).val());
+		});
         var chk =0;
         $("#allcb").click(function(){
             console.log($("input[type=checkbox]"));

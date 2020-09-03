@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 <link rel="stylesheet" href="/chanBoard/css/write.css">
@@ -11,33 +11,33 @@
 <body>
     <script src= "../js/jquery-1.12.4.js"></script>
     <script src= "../js/jquery-ui.js"></script>
-    <!-- »ó´Ü ¸Þ´º -->
+    <!-- ìƒë‹¨ ë©”ë‰´ -->
 
-    <!-- ÄÁÅ×ÀÌ³Ê -->
+    <!-- ì»¨í…Œì´ë„ˆ -->
     <div id="container">
         <div id="header">
-            Âù¿ìÀÇ °Ô½ÃÆÇÀÔ´Ï´Ù.
+            ì°¬ìš°ì˜ ê²Œì‹œíŒìž…ë‹ˆë‹¤.
         </div>
         
         <div id="main">
         	<input type="hidden" value="${dto.seq }" name="seq">
-            <div id="title">±Û¾²±â</div>
+            <div id="title">ê¸€ì“°ê¸°</div>
             <form method="POST" action="../board/editOk.do?seq=${seq}">
             <div id="subjectBox">
-                <span class="subject">Á¦¸ñ</span> <input class="subject" type="text" id="subject" name="subject" value="${dto.subject }">
+                <span class="subject">ì œëª©</span> <input class="subject" type="text" id="subject" name="subject" value="${dto.subject }">
             </div>
             <div id="contentBox">
-                <span class="content">³»¿ë</span> <textarea class="content" id="content" name="content">${dto.content }</textarea>
+                <span class="content">ë‚´ìš©</span> <textarea class="content" id="content" name="content">${dto.content }</textarea>
             </div>
 
             <div id="file">
-                <div>ÆÄÀÏ Ã·ºÎ</div>
+                <div>íŒŒì¼ ì²¨ë¶€</div>
                 <input type="file" name="">
             </div>
-            <button id="addfile">ÆÄÀÏ Ãß°¡</button>
+            <button id="addfile">íŒŒì¼ ì¶”ê°€</button>
             <div id="btnBox">
-               	<a href="../board/list.do"><button type="button" class="byeBtn" >Ãë¼Ò</button></a>
-                <button class="byeBtn" type="submit" onclick="location.href('../board/editOk.do')">¼öÁ¤</button>
+               	<a href="../board/list.do"><button type="button" class="byeBtn" >ì·¨ì†Œ</button></a>
+                <button class="byeBtn" type="submit" onclick="location.href('../board/editOk.do')">ìˆ˜ì •</button>
             </div>
             </form>
     </div><!-- main -->

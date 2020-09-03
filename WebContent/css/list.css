@@ -25,7 +25,6 @@
         }
         #tbl_box{
             width:1400px;
-            height:727px;
             margin:95px auto;
             background-color:white;
             padding-top:30px;
@@ -97,9 +96,16 @@
             list-style-type: none;
             cursor:pointer;
         }
-        .pagingBtn:nth-last-child(){
+          li:nth-last-child(1){
             border-right:0px;
         }
-        #paging{
-            margin-left:550px;
+        .paging{
+            margin-left:55px;
         }
+        #moveBox{
+        	height:50px;
+        }
+        a{
+        color:black;
+        }
+        
